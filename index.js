@@ -43,11 +43,14 @@ client.on("message", async message => {
     else if(command === "newo" || command === "newoad"){
         message.channel.send(":sunglasses: :call_me:")
     }
-    else if(command === "furia" || command === "nxfuria"){
-        message.channel.send(":potato:")
-    }
     else if(command === "drinka" || command === "zdrinka"){
         message.channel.send(":regional_indicator_s: :regional_indicator_o:")
+    }
+    else if(command === "furia" || command === "nxfuria"){
+        message.channel.send("<:emoji_47:831279037334159400>")
+    }
+    else if(command === "maria" || command === "MariaDarkSM"){
+        message.channel.send("<:olareina:825403240686157834>")
     }
 
 

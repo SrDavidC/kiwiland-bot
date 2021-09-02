@@ -46,7 +46,7 @@ client.on("message", async message => {
     else if(command === "furia" || command === "nxfuria"){
         message.channel.send(":potato:")
     }
-    else if(command === "furia" || command === "nxfuria"){
+    else if(command === "drinka" || command === "zdrinka"){
         message.channel.send(":regional_indicator_s: :regional_indicator_o:")
     }
 

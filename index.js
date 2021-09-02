@@ -55,7 +55,7 @@ client.on("message", async message => {
     }
     
     else if (command === "talk") {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('No tienes permisos para usar este comando');
         const sayMessage = args.join(" ");
         message.delete().catch(O_o => { });
         message.channel.send(sayMessage);

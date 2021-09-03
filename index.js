@@ -10,7 +10,7 @@ const { MessageEmbed } = require('discord.js');
 client.on("ready", async () => {
     console.log(`${client.user.username} is online on ${client.guilds.cache.size} servers!`);
 
-    client.user.setActivity("Kiwiland.wtf", { type: "PLAYING" });
+    client.user.setActivity("Kiwiland.wtf ", { type: "PLAYING" });
 });
 client.on("message", async message => {
     // This event will run on every single message received, from any channel or DM.

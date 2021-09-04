@@ -5,6 +5,9 @@ const fs = require("fs");
 const client = new Discord.Client({ disableEveryone: true });
 client.commands = new Discord.Collection();
 const { MessageEmbed } = require('discord.js');
+const util = require('minecraft-server-util');
+const status = "<:GreenTick:883814400409104414> Online"; // MANTENIMIENTO
+
 
 //Playing Message
 client.on("ready", async () => {

@@ -101,6 +101,28 @@ client.on("message", async message => {
 
 
     }
+        else if(command === "sv" || command === "server" || command === "kiwi" || command === "kiwiland"){
+        util.status("kiwiland.wtf").then((response) =>{
+            console.log(response);
+            const embed = new Discord.MessageEmbed()
+            .setColor('#1F8B4C')
+            .setTitle('KIWILAND SERVER STATUS')
+            .setThumbnail('https://i.imgur.com/WFxU2I2.png')
+            .addFields(
+                {name: 'Status', value: status   },
+                {name: 'Online Players', value: response.onlinePlayers},
+                {name: '**Modalidades**', value: "PracticePvP / Meetups / Creative"},
+                {name: 'Server IP', value: response.host},
+                {name: 'Version', value: "1.16.x - 1.17"}
+            )
+            .setFooter("Server: Kiwiland || Server Record: 139 players", "https://i.imgur.com/Z85KiTq.png");
+            message.channel.send(embed);
+        })
+        .catch ((error) =>{
+            message.channel.send('Kiwiland server is off or in maintence');
+            throw error;
+        })
+    }
 })
 
 

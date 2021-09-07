@@ -136,7 +136,7 @@ client.on("message", async message => {
         channel.send(
             new MessageEmbed()
                 
-                .setTitle(" ➲__**ANUNCIO**__ ")
+                .setTitle(" **Kiwi Network** ")
                 .setDescription(args.slice(1).join(" "))
                 .setColor('#c50118')
         )

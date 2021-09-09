@@ -7,19 +7,39 @@ client.commands = new Discord.Collection();
 const { MessageEmbed } = require('discord.js');
 const util = require('minecraft-server-util');
 const status = "<:GreenTick:883814400409104414> Online"; // MANTENIMIENTO
+const memberCounter = require("./counters/member-counter");
+const activities = [
+  "kiwiland.wtf",
+  "UHC Meetups",
+  "KiwiBot is Tier 2 High on PvP",
+  " '!' is my prefix",
+  "New modalities soon..",
+  "Server : kiwiland.wtf",
+  "kiwiland.wtf",
+  "UHC",
+  
+];
 
 
-//Playing Message
 client.on("ready", async () => {
+    setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+        const newActivity = activities[randomIndex];
+        client.user.setActivity(newActivity);
+        }, 5000);
     console.log(`${client.user.username} is online on ${client.guilds.cache.size} servers!`);
-
-    client.user.setActivity("Kiwiland.wtf ", { type: "PLAYING" });
+    memberCounter(client)
+    //client.user.setActivity("Kiwiland.wtf", { type: "PLAYING" });
 });
 client.on("message", async message => {
     if (message.author.bot) return;
     if (!message.content.startsWith(config.prefix)) return;
+
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase(); 
+    const command = args.shift().toLowerCase();
+
+    
+    
     if(command ==="pef"){
         message.channel.send(":yum:")
     }
@@ -40,25 +60,31 @@ client.on("message", async message => {
     }
 
 
+
     
     ///UTILITY COMANDS
     else if(command ==="ip" || command === "IP"){
         message.channel.send("kiwiland.wtf")
     }
     
+    
+    /////////////// COMANDO HABLAR CON EL BOT ///////////////
     else if (command === "talk") {
-        if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('No tienes permisos para usar este comando');
+        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
         const sayMessage = args.join(" ");
         message.delete().catch(O_o => { });
         message.channel.send(sayMessage);
     }
 
+
+
+             /////////////// COMANDO ANUNCIO ELABORADO !say #canal Mensaje // !say #canal Mensaje -ping ///////////////
     else if (command === "say") {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
 
         let mention;
 
-        if (!args.length) return message.channel.send('> Usage: M!announce <#channel> <message> <-ping ?>');
+        if (!args.length) return message.channel.send('> Usage: M!anuncio <#channel> <message> <-ping ?>');
 
         const channel = message.mentions.channels.first();
         if (!channel) return message.reply('Especifica el canal');
@@ -78,7 +104,7 @@ client.on("message", async message => {
 
         channel.send(
             new MessageEmbed()
-                .setTitle(" **Kiwi Network** ")
+                .setTitle("KIWILAND ANNOUNCEMENT :kiwi: ")
                 .setThumbnail('https://i.imgur.com/WFxU2I2.png')
                 .setDescription(args.slice(1).join(" "))
                 .setTimestamp()
@@ -87,7 +113,10 @@ client.on("message", async message => {
 
 
     }
-        else if(command === "sv" || command === "server" || command === "kiwi" || command === "kiwiland"){
+    
+    /////////////// COMANDO STATUS DEL SERVER !sv ///////////////
+    
+    else if(command === "sv" || command === "server" || command === "kiwi" || command === "kiwiland"){
         util.status("kiwiland.wtf").then((response) =>{
             console.log(response);
             const embed = new Discord.MessageEmbed()
@@ -109,7 +138,17 @@ client.on("message", async message => {
             throw error;
         })
     }
+    
+    /////////////// QUITAR UN ROL ///////////////
+    const Role = message.guild.roles.cache.get("RoleID");
+    if(command === "ja"){
+        message.member.roles.remove("783060970703683605");
+    }
 
+    
+    
+    //////////////// ANUNCIO SENCILLO ///////////////
+    
     else if (command === "anuncio") {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
 
@@ -136,13 +175,64 @@ client.on("message", async message => {
         channel.send(
             new MessageEmbed()
                 
-                
+                .setTitle(" ➲__**ANUNCIO**__ ")
                 .setDescription(args.slice(1).join(" "))
-                .setColor('#2DA9FF')
+                .setColor('#c50118')
         )
-
-
     }
+
+
+
+            //////////////// COMANDO DE SUGERENCIAS ///////////////
+   
+
+    else if(command === "suggest"){
+        const nosug = message.member.roles.cache.some(role => role.name === 'NoSug')
+        const channel = message.guild.channels.cache.find(c => c.name === '◜📮◝・𝖲uggestions・');
+        if(nosug) return message.channel.send('*Se te ha negado el permiso de sugerir*');
+        if(!channel) return message.channel.send('*El canal no existe*!');
+
+        let messageArgs = args.join(' ');
+        const embed = new Discord.MessageEmbed()
+        .setColor('#049FBC')
+        .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+        .setDescription(messageArgs);
+
+        channel.send(embed).then((msg) =>{
+            msg.react('👍');
+            msg.react('👎');
+            message.delete();
+        }).catch((err)=>{
+            throw err;
+        });
+    }
+
+    else if(command === "suggestvip"){
+        const nosug = message.member.roles.cache.some(role => role.name === 'NoSug')
+        const channel = message.guild.channels.cache.find(c => c.name === '◜🚂◝・𝖥𝖾𝖺𝗍𝗎𝗋𝖾𝗌・');
+        //const channel = message.guild.channels.cache.find(c => c.name === '◜🔌◝・𝖢omandos・');
+        if (!message.member.hasPermission('CHANGE_NICKNAME')) return message.reply('No tienes permisos para usar este comando');
+        if(nosug) return message.channel.send('*Se te ha negado el permiso de sugerir*');
+        if(!channel) return message.channel.send('*El canal no existe*!');
+        let messageArgs = args.join(' ');
+        const embed = new Discord.MessageEmbed()
+        .setColor('#049FBC')
+        .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+        .setFooter("*This exclusive suggestion from VIP, Medias Ranks, Partners or Boosters*")
+        .setDescription(messageArgs);
+        
+        channel.send(embed).then((msg) =>{
+            msg.react('👍');
+            msg.react('👎');
+            message.delete();
+        }).catch((err)=>{
+            throw err;
+        });
+    }
+    
+
+
+
 
 
 })

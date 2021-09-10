@@ -76,7 +76,7 @@ client.on("message", async message => {
     
     /////////////// COMANDO HABLAR CON EL BOT ///////////////
     else if (command === "talk") {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('No tienes permisos para usar este comando');
         const sayMessage = args.join(" ");
         message.delete().catch(O_o => { });
         message.channel.send(sayMessage);
@@ -86,7 +86,7 @@ client.on("message", async message => {
 
              /////////////// COMANDO ANUNCIO ELABORADO !say #canal Mensaje // !say #canal Mensaje -ping ///////////////
     else if (command === "say") {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('No tienes permisos para usar este comando');
 
         let mention;
 

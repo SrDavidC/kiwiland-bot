@@ -248,7 +248,7 @@ client.on("message", async message => {
         const embed = new Discord.MessageEmbed()
         .setColor('#049FBC')
         .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-        .setFooter("*This exclusive suggestion from exclusive members :diamond_shape_with_a_dot_inside: ")
+        .setFooter("*This exclusive suggestion from exclusive members")
         .setDescription(messageArgs);
         
         channel.send(embed).then((msg) =>{

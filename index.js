@@ -139,31 +139,28 @@ client.on("message", async message => {
         })
     }
     ////////////////////STATUS DE OTRO SERVIDOR////////////////////////////////////  
-  else if (command === "status"){
+      else if (command === "status"){
         if(!args[0]) return message.channel.send('Especifica la IP del server');
-        if(!args[1]) return message.channel.send('Please enter a minecraft server port');
  
-        util.status(args[0], {port: parseInt(args[1])}).then((response) =>{
+        util.status(args[0]).then((response) =>{
             console.log(response);
             const embed = new Discord.MessageEmbed()
-            .setColor('Random')
-            .setTitle('Mc server status')
+            .setColor('#049FBC')
+            .setTitle('SERVER STATUS')
             .addFields(
                 {name: 'Server IP', value: response.host},
                 {name: 'Online Players', value: response.onlinePlayers},
                 {name: 'Version', value: response.version}
             )
-            .setFooter('Mc server util by CodeLyon');
+            .setFooter('kiwiland.wtf Discord Bot');
  
             message.channel.send(embed);
         })
         .catch ((error) =>{
-            message.channel.send('there was an error finding this server');
+            message.channel.send('No se pudo encontrar el servidor');
             throw error;
         })
     }
-  }
-  
   
   
     /////////////// QUITAR UN ROL ///////////////

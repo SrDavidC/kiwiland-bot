@@ -58,6 +58,9 @@ client.on("message", async message => {
     else if(command === "maria" || command === "MariaDarkSM"){
         message.channel.send("<:olareina:825403240686157834>")
     }
+  else if(command === "scly" || command === "furro"){
+        message.channel.send("<:emoji_53:881644167900581950>")
+    }
 
 
 

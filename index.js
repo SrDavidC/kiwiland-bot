@@ -205,7 +205,7 @@ client.on("message", async message => {
         channel.send(
             new MessageEmbed()
                 
-                .setTitle(" ➲__**ANUNCIO**__ ")
+                
                 .setDescription(args.slice(1).join(" "))
                 .setColor('#c50118')
         )

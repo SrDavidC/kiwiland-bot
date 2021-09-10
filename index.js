@@ -61,10 +61,13 @@ client.on("message", async message => {
   else if(command === "scly" || command === "furro"){
         message.channel.send("<:emoji_53:881644167900581950>")
     }
+  else if(command === "mitormento" || command === "tormento"){
+        message.channel.send(":moneybag: :moneybag:")
+    }
 
 
 
-    
+
     ///UTILITY COMANDS
     else if(command ==="ip" || command === "IP"){
         message.channel.send("kiwiland.wtf")

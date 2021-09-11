@@ -17,7 +17,6 @@ const activities = [
   "Server : kiwiland.wtf",
   "kiwiland.wtf",
   "UHC",
-  "Members: " + memberCount.toLocaleString(),
   
   
 ];

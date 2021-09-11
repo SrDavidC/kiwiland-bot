@@ -90,12 +90,14 @@ client.on("message", async message => {
 
         let mention;
 
-        if (!args.length) return message.channel.send('> Usage: M!anuncio <#channel> <message> <-ping ?>');
+        if (!args.length) return message.channel.send('> Usage: !anuncio <#channel> <Color ><message> <-ping ?>');
 
         const channel = message.mentions.channels.first();
         if (!channel) return message.reply('Especifica el canal');
 
-        if (!args[1]) return message.reply('Especifica el mensaje');
+        if (!args[1]) return message.reply('Especifica el color del embed (En formato Hex)');
+
+        if (!args[2]) return message.reply('Especifica el mensaje');
 
         // mentions
         if (args.some((val) => val.toLowerCase() === '-ping')) {
@@ -112,10 +114,11 @@ client.on("message", async message => {
             new MessageEmbed()
                 .setTitle("KIWILAND ANNOUNCEMENT :kiwi: ")
                 .setThumbnail('https://i.imgur.com/WFxU2I2.png')
-                .setDescription(args.slice(1).join(" "))
+                .setDescription(args.slice(2).join(" "))
                 .setTimestamp()
-                .setColor('RANDOM')
-        )
+                .setColor(args.slice(1).join(" "))
+        
+                )
 
 
     }
@@ -180,16 +183,18 @@ client.on("message", async message => {
     //////////////// ANUNCIO SENCILLO ///////////////
     
     else if (command === "anuncio") {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('No tienes permisos para usar este comando');
 
         let mention;
 
-        if (!args.length) return message.channel.send('> Usage: M!anuncio <#channel> <message> <-ping ?>');
+        if (!args.length) return message.channel.send('> Usage: !anuncio <#channel> <Color ><message> <-ping ?>');
 
         const channel = message.mentions.channels.first();
         if (!channel) return message.reply('Especifica el canal');
 
-        if (!args[1]) return message.reply('Especifica el mensaje');
+        if (!args[1]) return message.reply('Especifica el color (En Formato Hex)');
+
+        if (!args[2]) return message.reply('Especifica el mensaje');
 
         // mentions
         if (args.some((val) => val.toLowerCase() === '-ping')) {
@@ -204,10 +209,8 @@ client.on("message", async message => {
 
         channel.send(
             new MessageEmbed()
-                
-                
-                .setDescription(args.slice(1).join(" "))
-                .setColor('#D500DD')
+                .setDescription(args.slice(2).join(" "))
+                .setColor(args.slice(1).join(" "))
         )
     }
 

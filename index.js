@@ -90,12 +90,12 @@ client.on("message", async message => {
 
         let mention;
 
-        if (!args.length) return message.channel.send('> Usage: !anuncio <#channel> <Color ><message> <-ping ?>');
+        if (!args.length) return message.channel.send('> Usage: !anuncio <#channel> <Color> <message> <-ping ?>');
 
         const channel = message.mentions.channels.first();
         if (!channel) return message.reply('Especifica el canal');
 
-        if (!args[1]) return message.reply('Especifica el color del embed (En formato Hex)');
+        if (!args[1].startsWith("#")) return message.reply('Pon un color válido en formato Hex');
 
         if (!args[2]) return message.reply('Especifica el mensaje');
 
@@ -192,7 +192,7 @@ client.on("message", async message => {
         const channel = message.mentions.channels.first();
         if (!channel) return message.reply('Especifica el canal');
 
-        if (!args[1]) return message.reply('Especifica el color (En Formato Hex)');
+        if (!args[1].startsWith("#")) return message.reply('Pon un color válido en formato Hex');
 
         if (!args[2]) return message.reply('Especifica el mensaje');
 

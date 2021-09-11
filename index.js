@@ -232,36 +232,14 @@ client.on("message", async message => {
         .setDescription(messageArgs);
 
         channel.send(embed).then((msg) =>{
-            msg.react('👍');
-            msg.react('👎');
+            msg.react("<:negative:886137582742814791>");
+            msg.react("<:positive:886137690234425386>");
             message.delete();
         }).catch((err)=>{
             throw err;
         });
     }
 
-    else if(command === "suggestvip"){
-        const nosug = message.member.roles.cache.some(role => role.name === 'NoSug')
-        const channel = message.guild.channels.cache.find(c => c.name === '◜🚂◝・𝖥𝖾𝖺𝗍𝗎𝗋𝖾𝗌・');
-        //const channel = message.guild.channels.cache.find(c => c.name === '◜🔌◝・𝖢omandos・');
-        if (!message.member.hasPermission('CHANGE_NICKNAME')) return message.reply('No tienes permisos para usar este comando');
-        if(nosug) return message.channel.send('*Se te ha negado el permiso de sugerir*');
-        if(!channel) return message.channel.send('*El canal no existe*!');
-        let messageArgs = args.join(' ');
-        const embed = new Discord.MessageEmbed()
-        .setColor('#049FBC')
-        .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-        .setFooter("*This exclusive suggestion from exclusive members")
-        .setDescription(messageArgs);
-        
-        channel.send(embed).then((msg) =>{
-            msg.react('👍');
-            msg.react('👎');
-            message.delete();
-        }).catch((err)=>{
-            throw err;
-        });
-    }
     
   
 ////////////////////////////PRUEBA/////////////////////////

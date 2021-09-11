@@ -207,7 +207,7 @@ client.on("message", async message => {
                 
                 
                 .setDescription(args.slice(1).join(" "))
-                .setColor('#25AADB')
+                .setColor('#FFF83C')
         )
     }
 

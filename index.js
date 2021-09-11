@@ -228,7 +228,7 @@ client.on("message", async message => {
 
         let messageArgs = args.join(' ');
         const embed = new Discord.MessageEmbed()
-        .setColor('#049FBC')
+        .setColor('#b02ffa')
         .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(messageArgs);
 

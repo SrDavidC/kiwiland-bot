@@ -263,42 +263,7 @@ client.on("message", async message => {
   
 ////////////////////////////PRUEBA/////////////////////////
   
-  const color = "#25AADB"
-  else if (command === "prueba") {
-    let messageArgs = args.join(' ');
-    const color = args.join(' ');
-  }
-  else if (command === "prueba") {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('No tienes permisos para usar este comando');
 
-        let mention;
-
-        if (!args.length) return message.channel.send('> Usage: M!anuncio <#channel> <message> <-ping ?>');
-
-        const channel = message.mentions.channels.first();
-        if (!channel) return message.reply('Especifica el canal');
-
-        if (!args[1]) return message.reply('Especifica el mensaje');
-
-        // mentions
-        if (args.some((val) => val.toLowerCase() === '-ping')) {
-            for (let i = 0; i < args.length; i++) {
-                if (args[i].toLowerCase() === '-ping') args.splice(i, 1);
-            }
-
-            mention = true;
-        } else mention = false;
-
-        if (mention === true) channel.send('@everyone');
-
-        channel.send(
-            new MessageEmbed()
-                
-                
-                .setDescription(args.slice(1).join(" "))
-                .setColor(color)
-        )
-    }
 
 
 

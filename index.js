@@ -13,8 +13,6 @@ const activities = [
   "UHC Meetups",
   "KiwiBot is Tier 2 High on PvP",
   " '!' is my prefix",
-  "New modalities soon..",
-  "Server : kiwiland.wtf",
   "kiwiland.wtf",
   "Kiwi UHC",
   "Kiwi TexturePack",

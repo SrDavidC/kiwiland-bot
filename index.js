@@ -16,7 +16,12 @@ const activities = [
   "New modalities soon..",
   "Server : kiwiland.wtf",
   "kiwiland.wtf",
-  "UHC",
+  "Kiwi UHC",
+  "Kiwi TexturePack",
+  "!tienda",
+  "!store",
+  "!ranks",
+  "Rangos en descuento !tienda",
   
   
 ];

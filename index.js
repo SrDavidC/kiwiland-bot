@@ -245,7 +245,17 @@ client.on("message", async message => {
   
 ////////////////////////////PRUEBA/////////////////////////
   
-
+  
+  /////////////!tienda !store !ranks////////////////
+    else if(command === "store" || command === "tienda"){
+        message.channel.send("¡Acá tienes la tienda del servidor! : https://kiwiland.tebex.io/")
+    }
+    else if(command === "store" || command === "tienda"){
+        message.channel.send("¡Acá tienes la tienda del servidor!: https://kiwiland.tebex.io/")
+    }
+    else if(command === "rangos" || command === "ranks" || command === "beneficios" || command === "benefits") {
+        message.channel.send("You can see that on " +  message.guild.channels.cache.get('884529545485615134').toString())
+    }
 
 
 

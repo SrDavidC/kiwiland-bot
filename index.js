@@ -266,7 +266,12 @@ client.on("message", async message => {
 
 })
 
-
+client.on('message', (message) => { 
+    if(message.channel.id === ('884538809818173510')) {
+    message.react('<:negative:886137582742814791>')
+    message.react('<:positive:886137690234425386>')
+}
+})
 
 
 

@@ -246,7 +246,7 @@ client.on("message", async message => {
 
     
   
-////////////////////////////PRUEBA/////////////////////////
+
   
   
   /////////////!tienda !store !ranks////////////////
@@ -260,8 +260,68 @@ client.on("message", async message => {
         message.channel.send("You can see that on " +  message.guild.channels.cache.get('884529545485615134').toString())
     }
 
+///////////////////////COMANDO !HEAD & !SKIN////////////////////////////////////
+else if(command === "head"){
+    const request = require("request"); 
+    const nombre = args.join(" ");
+        if (!nombre) {
+                return message.channel.send("Ingresa el nombre de un jugador **premium**");
+            }
+            if (nombre.length > 16) {
+                return message.channel.send("Los nombres de los jugadores de minecraft no contienen mas de 16 caracteres.");
+            }
+            let mojang_player_api = `https://api.mojang.com/users/profiles/minecraft/${nombre}`;
+            request(mojang_player_api, function(err, resp, body) {
+                if (err) {
+                    return message.channel.send(`El usuario **${nombre}** no es un jugador premium.`);
+                }
+                try {
+                    body = JSON.parse(body);
+                    let player_id = body.id;
+                    let skin = `https://crafatar.com/skins/${player_id}`;
+                    let avatar = `https://crafatar.com/avatars/${player_id}`;
+                    let embed = new MessageEmbed();
+                    embed.setColor("#EE1289");
+                    embed.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                    embed.setImage(avatar);
+                    return message.channel.send(embed);
+                } catch (err) {
+                    return message.channel.send(`El usuario **${nombre}** no es un jugador premium!`);
+                }
+            });
+}
+    else if(command === "skin"){
+    const request = require("request"); 
+    const nombre = args.join(" ");
+        if (!nombre) {
+                return message.channel.send("Ingresa el nombre de un jugador **premium**");
+            }
+            if (nombre.length > 16) {
+                return message.channel.send("Los nombres de los jugadores de minecraft no contienen mas de 16 caracteres.");
+            }
+            let mojang_player_api = `https://api.mojang.com/users/profiles/minecraft/${nombre}`;
+            request(mojang_player_api, function(err, resp, body) {
+                if (err) {
+                    return message.channel.send(`El usuario **${nombre}** no es un jugador premium.`);
+                }
+                try {
+                    body = JSON.parse(body);
+                    let player_id = body.id;
+                    let render = `https://crafatar.com/renders/body/${player_id}`;
+                    let skin = `https://crafatar.com/skins/${player_id}`;
+                    let avatar = `https://crafatar.com/avatars/${player_id}`;
+                    let embed = new MessageEmbed();
+                    embed.setColor("#EE1289");
+                    embed.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                    embed.setImage(render);
+                    return message.channel.send(embed);
+                } catch (err) {
+                    return message.channel.send(`El usuario **${nombre}** no es un jugador premium!`);
+                }
+            });
+    }
 
-
+})
 
 
 })

@@ -45,7 +45,7 @@ client.on("message", async message => {
     
     
     if(command ==="pef"){
-        message.channel.send(":yum:")
+        message.channel.send(":yum: :yum:")
     }
     else if(command === "moob" || command === "moob56"){
         message.channel.send(":moyai:")
